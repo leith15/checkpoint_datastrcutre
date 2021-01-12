@@ -1,0 +1,49 @@
+ALGORITHM SAME_ELEMENT
+VAR
+ tab1 : ARRAY-OF Integer[10];
+ tab2 : ARRAY-OF Integer[10];
+ i,j,sum1,sum2,k,m,somme : Integer;
+exit1,exit2 : Boolean;
+
+BEGIN
+
+ tab1:={3,1,7,9};
+ tab2:={2,4,1,9,3};
+
+// calculating the sum in tab1
+
+ sum1:=0;
+FOR i FROM 0 TO tab1.length -1 STEP 1 DO 
+ Begin 
+exit1:=false;
+FOR j FROM 0 TO tab2.length -1 STEP 1 DO 
+BEGIN
+ if( tab1[i]=tab2[j]) THEN 
+ exit1:=true;
+break;
+END-IF
+END-FOR
+ if (exit1=true) then sum1:=sum1 + tab1[i];
+END-IF
+END-FOR
+
+// calculating the sum in tab2
+
+ sum2:=0;
+FOR k FROM 0 TO tab2.length -1 STEP 1 DO 
+ Begin 
+ exit2:=false;
+ FOR m  FROM 0 TO tab1.length -1 STEP 1 DO 
+ begin 
+  if( tab1[m]=tab2[k]) THEN  
+  exit2:=true;
+break;
+END-IF
+END-FOR
+ if (exit2=true) then sum2:=sum2 + tab2[k];
+END-IF
+END-FOR
+
+//display the result 
+ somme:=sum1 + sum2;
+ write(somme);
